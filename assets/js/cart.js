@@ -1,5 +1,12 @@
 var cart = JSON.parse(sessionStorage.getItem("cart")); 
 
-var html = "<div>"+ cart[0] +"</div>";
+console.log(cart);
 
-$("body").append(html);
+for (var key in cart) {
+    if (cart.hasOwnProperty(key)) {
+        var html = "<div><h1>Cart</h1></div><div><h3>"+ cart[key].product +"</h3><p>"+ cart[key].productType +"</p><p>"+ cart[key].platingType +
+				"</p><p>"+ cart[key].nameType +"</p><p>"+ cart[key].nameOnProduct +"</p><p>"+ cart[key].nameLanguage +"</p><p>price</p></div>";
+
+		$("body").append(html);
+    }
+}
