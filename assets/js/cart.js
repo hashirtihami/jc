@@ -1,5 +1,5 @@
 var cart = JSON.parse(sessionStorage.getItem("cart")); 
 
-console.log(cart);
+var html = "<div>"+ cart[0] +"</div>";
 
-$("body").append();
+$("body").append(html);
