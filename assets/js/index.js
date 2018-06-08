@@ -15,6 +15,7 @@ $(".ring").on("click",function() {
 
 $(".cuff").on("click",function() {
 	sessionStorage.setItem("product","cufflinks");
+	sessionStorage.setItem("productType","none");
 	console.log(sessionStorage);
 });
 

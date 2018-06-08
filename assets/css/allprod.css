@@ -11,3 +11,9 @@ a:link {
     text-decoration: none;
     color:black;
 }
+.cart{
+    position: fixed;
+    top: 20px;
+    right: 10px; 
+    
+}
