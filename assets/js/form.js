@@ -13,12 +13,12 @@ function submitFunction() {
    	product.additionalInstruction = $("#ins").val();
 
    	cart.push(product);
-   	sessionStorage.setItem("cart",JSON.stringify(cart));
+   	localStorage.setItem("jsonData",JSON.stringify(cart));
 }
 
+//window.onclose = localStorage.clear();
 
-
-var additional = 250;
+/*var additional = 250;
 
 var prices = new object();
 prices.simpleLocket = 1500;
@@ -101,7 +101,11 @@ var charges = new object();
  charges.sweden = 2685;
  charges.switzerland = 2685;
  charges.syria = 2014;
+<<<<<<< HEAD
  charges.toaiwan = 2098;
   charges.uk = 1680;
  charges.us = 1930;
+=======
+ charges.toaiwan = 2098;*/
+>>>>>>> 756e257dd4f614bcc0eced67a691e945e692da87
 
