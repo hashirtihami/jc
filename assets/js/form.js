@@ -12,3 +12,13 @@ var product = new Object();
 
    	console.log(product);  
 }
+
+simpleLocket = 1500;
+fancyLocketSingle = 1600;
+pearlLocketSingle = 1600;
+heartLocketSingle = 1600;
+infinityLocket = 1700;
+simpleRing= 1200;
+calligraphyRing= 1400;
+infinityRing= 1500;
+cufflinks = 1600;
