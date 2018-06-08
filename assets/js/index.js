@@ -1,3 +1,12 @@
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+window.onload = openNav;
+function closeNav() {
+    document.getElementById("myNav").style.height = "0%";
+}
+
+
 $(".bracelet").on("click",function() {
 	sessionStorage.setItem("product","bracelet");
 	console.log(sessionStorage);
