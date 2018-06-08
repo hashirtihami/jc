@@ -1,10 +1,14 @@
 //function to fill form data in products object
 function submitFunction() {
 
-var products = new Object();
-		products.platingType = document.getElementById("plating").value;
-		products.nameType = document.getElementById("ntype").value;
-		products.nameOnProduct = document.getElementById("nameonp").value;
-		products.nameLanguage = document.getElementById("namelang").value;
-   		products.additionalInstruction = document.getElementById("ins").value;     
+var product = new Object();
+		product.product = sessionStorage.product;
+		product.productType = sessionStorage.productType;
+		product.platingType = $("#plating").val();
+		product.nameType = $("#ntype").val();
+		product.nameOnProduct = $("#nameonp").val();
+		product.nameLanguage = $("#namelang").val();
+   		product.additionalInstruction = $("#ins").val();   
+
+   	console.log(product);  
 }
