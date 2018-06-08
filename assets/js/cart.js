@@ -1,4 +1,13 @@
-var cart = JSON.parse(sessionStorage.getItem("cart")); 
+var jsonData = JSON.parse(localStorage.getItem("jsonData"));
+
+if(JSON.parse(sessionStorage.getItem("cart")))
+	var cart = JSON.parse(sessionStorage.getItem("cart"));
+else
+	var cart = {};
+
+for(var k in jsonData) cart[Object.keys(cart).length]=jsonData[k];
+localStorage.clear();
+sessionStorage.setItem("cart",JSON.stringify(cart));
 
 for (var key in cart) {
     if (cart.hasOwnProperty(key)) {

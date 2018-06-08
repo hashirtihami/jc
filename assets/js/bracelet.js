@@ -1,10 +1,10 @@
 $(".simple").on("click",function() {
-	sessionStorage.setItem("productType","simple");
-	console.log(sessionStorage);
+	localStorage.setItem("productType","simple");
+	console.log(localStorage);
 });
 
 $(".heart").on("click",function() {
-	sessionStorage.setItem("productType","heart");
-	console.log(sessionStorage);
+	localStorage.setItem("productType","heart");
+	console.log(localStorage);
 });
 
