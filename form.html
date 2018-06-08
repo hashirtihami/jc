@@ -20,7 +20,7 @@
   
 <div class="maincon">
 	<div class="container">
-	  <form>
+	  <form action="cart.html">
 	  	<div class="row">
 	      <div class="col-25">
 	        <label for="plating">Plating</label>
@@ -77,11 +77,10 @@
 	        <textarea id="ins" name="ins" placeholder="Write something.." style="height:200px"></textarea>
 	      </div>
 	    </div>
-	    
+	    <div class="row">
+	    	<button onclick="submitFunction()" id="submitButton" class= "row btn btn-primary btn-md">Add to Cart</button>
+	  	</div> 
 	  </form>
-	  <div class="row">
-	    <button onclick="submitFunction()" id="submitButton" class= "row btn btn-primary btn-md">Add to Cart</button>
-	  </div>
 	</div>
 
 </div>
