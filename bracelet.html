@@ -11,31 +11,51 @@
 
 
 <body>
-
-<div class="homediv">
-     <a href="index.html"> <h2 class="homecontent"> Jewel Circle </h2> </a>
-     <button type="button" class="btn btn-default btn-lg cart"> <i class="fas fa-cart-arrow-down "></i> </button>
+<div class="container">
+  <div class="homediv">
+    <a href="index.html"> <h2 class="homecontent"> Jewel Circle </h2> </a>
+    <button type="button" class="btn btn-default btn-lg cart"> <i class="fas fa-cart-arrow-down "></i> </button>
   </div>
-  
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
   <div class="container">
-    <form action="form.html">
-      <div class="row">
-        <div class="simple col-lg-6 col-sm-12">
-          <div class="img-thumbnail">
-            <img src="images/bracelet/simple.jpeg" alt="Simple" style="width:100%">
-            <input type="radio" name="bracelet" value="simple" checked> Simple Bracelet <br>
-          </div>
-        </div>
-        
-        <div class="heart col-lg-6 col-sm-12">
-          <div class="img-thumbnail">
-            <img src="images/bracelet/heart.jpeg" alt="Heart" style="width:100%">
-            <input type="radio" name="bracelet" value="heart" > Heart Bracelet <br>
-          </div>
-        </div>
-      </div> 
-      <button class="btn btn-primary"> Next </button>   <!--get to form.html with this button-->
-    </form>
+    <div class="responsive">
+      <div class="gallery">
+        <a class="simple"> 
+          <img src="images/bracelet/simple.jpeg"  class="image" alt="Bracelet">
+          <div class="desc">Simple Bracelet</div>
+        </a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="responsive">
+      <div class="gallery">
+        <a class="heart"> 
+          <img src="images/bracelet/heart.jpeg"  class="image" alt="Bracelet">
+          <div class="desc">Heart Bracelet</div>
+        </a>
+    </div>
+  </div>
+</div>
+  
+<div class="nextButton">
+  <button class=" btn btn-primary"> Next </button>  
+</div>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

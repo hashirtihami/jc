@@ -1,7 +1,59 @@
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 5px;
+    text-align: center;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.responsive {
+    padding: 0 6px;
+    float: left;
+    width: 25%;
+}
+
+@media only screen and (max-width: 700px) {
+    .responsive {
+        width: 49.99999%;
+        margin: 6px 0;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.cart{
+    position: fixed;
+    top: 20px;
+    right: 10px; 
+    
+}
+
 .homediv{
     margin-top:10px;
     text-align: center;
-    margin-bottom:10px;
 }
 .homecontent{
     padding-top:10px;
@@ -11,9 +63,12 @@ a:link {
     text-decoration: none;
     color:black;
 }
-.cart{
-    position: fixed;
-    top: 20px;
-    right: 10px; 
+
+.nextButton{
     
+    text-align:center;
+}
+
+.imgdiv{
+    padding-bottom: 15px;
 }
