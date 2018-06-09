@@ -13,12 +13,10 @@ function submitFunction() {
    	product.additionalInstruction = $("#ins").val();
 
    	cart.push(product);
-   	sessionStorage.setItem("cart",JSON.stringify(cart));
+   	localStorage.setItem("jsonData",JSON.stringify(cart));
 }
 
-
-
-var additional = 250;
+/*var additional = 250;
 
 var prices = new object();
 prices.simpleLocket = 1500;
@@ -32,16 +30,20 @@ prices.infinityRing= 1500;
 prices.cufflinks = 1600;
 
 var charges = new object();
+ charges.us = 1930;
+ charges.canada= 1930;
+ charges.uk = 1680;
+ charges.saudia = 3805;
+ charges.india = 3915;
+ charges.bangla = 3915;
  charges.australia = 2350;
  charges.austria = 2853;
- charges.bangla = 3915;
  charges.belgium = 2182;
  charges.bhutan = 2182;
  charges.botswana = 2520;
  charges.brunei = 2350;
  charges.bulgaria = 2265;
  charges.cambodia = 2685;
- charges.canada= 1930;
  charges.canaryIsland =3189;
  charges.channelIslands =2349;
  charges.china = 2349;
@@ -54,9 +56,8 @@ var charges = new object();
  charges.france = 2265;
  charges.germany = 2182;
  charges.greece = 2182;
- charges.hongKong = 1678;
- charges.hungary = 2349;
- charges.india = 3915;	
+ charges.hong Kong = 1678;
+ charges.hungary = 2349;	
  charges.indonesia = 2098;
  charges.iran = 2349;
  charges.ireland = 2433
@@ -89,19 +90,16 @@ var charges = new object();
  charges.poland = 2685;
  charges.portugal =	2265;
  charges.others = 7217;
- charges.romania = 2350;
- charges.saudia = 3805;
+ charges.romania = 2349.902;
  charges.scotland =	2182;
  charges.singapore = 1678;
  charges.slovakia =	2685;
  charges.southAfrica =	2182;
  charges.spain = 2182;
- charges.sriLanka = 1342;
+ charges.sri Lanka = 1342;
  charges.swaziland = 4699;
  charges.sweden = 2685;
  charges.switzerland = 2685;
  charges.syria = 2014;
- charges.toaiwan = 2098;
-  charges.uk = 1680;
- charges.us = 1930;
+ charges.toaiwan = 2098;*/
 
