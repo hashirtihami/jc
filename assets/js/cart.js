@@ -13,7 +13,7 @@ for (var key in cart) {
     if (cart.hasOwnProperty(key)) {
 		var html = "";
         html += "<li class='item'><img src='images/index/"+cart[key].product+".jpeg'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
-        		"<table><tr><td>ProductType</td><td>PlatingType</td><td>NameType</td><td>NameOnProduct</td><td>Language</td><td>Price</td><td>Country</td></tr>"+ 
+        		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td></tr>"+ 
         		"<tr><td>"+cart[key].productType.toUpperCase() +"</td><td>"+ cart[key].platingType.toUpperCase() +"</td><td>"+ cart[key].nameType.toUpperCase() +
         		"</td><td>"+ cart[key].nameOnProduct.toUpperCase() +"</td>"+"<td>"+ cart[key].nameLanguage.toUpperCase() +"</td><td>price</td><td>"+
         		 cart[key].country.toUpperCase() +"</td></tr></table>";

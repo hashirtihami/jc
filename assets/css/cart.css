@@ -9,7 +9,7 @@ img {
 .item {
 	border: 1px solid steelblue;
 	padding: 5px;
-	margin: 5px;
+	margin-bottom: 10px;
 	overflow: auto;
 	border-radius: 10px;
 }
