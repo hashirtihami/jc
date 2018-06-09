@@ -12,11 +12,11 @@ sessionStorage.setItem("cart",JSON.stringify(cart));
 for (var key in cart) {
     if (cart.hasOwnProperty(key)) {
 		var html = "";
-        html += "<div><h3>"+ cart[key].product +"</h3><p>"+ cart[key].productType +"</p><p>"+ cart[key].platingType +
+        html += "<div class='item'><img src='images/index/"+cart[key].product+".jpeg'><h4>"+ cart[key].product.toUpperCase() +"</h4><p>"+ cart[key].productType +"</p><p>"+ cart[key].platingType +
 				"</p><p>"+ cart[key].nameType +"</p><p>"+ cart[key].nameOnProduct +"</p><p>"+ cart[key].nameLanguage +
 				"</p><p>price</p><p>"+ cart[key].country +"</p></div>";
 
-		$("body").append(html);
+		$(".container").append(html);
     }
 }
 
