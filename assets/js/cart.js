@@ -12,11 +12,13 @@ sessionStorage.setItem("cart",JSON.stringify(cart));
 for (var key in cart) {
     if (cart.hasOwnProperty(key)) {
 		var html = "";
-        html += "<div class='item'><img src='images/index/"+cart[key].product+".jpeg'><h4>"+ cart[key].product.toUpperCase() +"</h4><p>"+ cart[key].productType +"</p><p>"+ cart[key].platingType +
-				"</p><p>"+ cart[key].nameType +"</p><p>"+ cart[key].nameOnProduct +"</p><p>"+ cart[key].nameLanguage +
-				"</p><p>price</p><p>"+ cart[key].country +"</p></div>";
+        html += "<li class='item'><img src='images/index/"+cart[key].product+".jpeg'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
+        		"<table><tr><td>ProductType</td><td>PlatingType</td><td>NameType</td><td>NameOnProduct</td><td>Language</td><td>Price</td><td>Country</td></tr>"+ 
+        		"<tr><td>"+cart[key].productType.toUpperCase() +"</td><td>"+ cart[key].platingType.toUpperCase() +"</td><td>"+ cart[key].nameType.toUpperCase() +
+        		"</td><td>"+ cart[key].nameOnProduct.toUpperCase() +"</td>"+"<td>"+ cart[key].nameLanguage.toUpperCase() +"</td><td>price</td><td>"+
+        		 cart[key].country.toUpperCase() +"</td></tr></table>";
 
-		$(".container").append(html);
+		$("ul").append(html);
     }
 }
 
