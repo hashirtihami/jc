@@ -9,6 +9,8 @@ for(var k in jsonData) cart[Object.keys(cart).length]=jsonData[k];
 localStorage.clear();
 sessionStorage.setItem("cart",JSON.stringify(cart));
 
+console.log(cart);
+
 for (var key in cart) {
     if (cart.hasOwnProperty(key)) {
 		var html = "";
@@ -16,11 +18,18 @@ for (var key in cart) {
         		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td></tr>"+ 
         		"<tr><td>"+cart[key].productType.toUpperCase() +"</td><td>"+ cart[key].platingType.toUpperCase() +"</td><td>"+ cart[key].nameType.toUpperCase() +
         		"</td><td>"+ cart[key].nameOnProduct.toUpperCase() +"</td>"+"<td>"+ cart[key].nameLanguage.toUpperCase() +"</td><td>price</td><td>"+
-        		 cart[key].country.toUpperCase() +"</td></tr></table>";
+        		 cart[key].country.toUpperCase() +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";
 
 		$("ul").append(html);
     }
 }
+
+$("li").on("click", "span", function(event){
+	$(this).parent().fadeOut(500,function(){
+		$(this).remove();
+	});
+	event.stopPropagation();
+});
 
 $("#checkout").on("click",function(e) {
 	for (var key in cart) {
