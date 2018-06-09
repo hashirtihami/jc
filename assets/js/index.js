@@ -1,8 +1,11 @@
 function openNav() {
     document.getElementById("myNavz").style.height = "100%";
 }
+
 window.onload = openNav;
+
 function closeNav() {
+	sessionStorage.setItem("country",$("#country").val());
     document.getElementById("myNavz").style.height = "0%";
 }
 

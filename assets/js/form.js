@@ -4,13 +4,14 @@ var cart = [];
 function submitFunction() {
 
 	var product = new Object();
-	product.product = sessionStorage.product;
-	product.productType = sessionStorage.productType;
+	product.product = sessionStorage.getItem("product");
+	product.productType = sessionStorage.getItem("productType");
 	product.platingType = $("#plating").val();
 	product.nameType = $("#ntype").val();
 	product.nameOnProduct = $("#nameonp").val();
 	product.nameLanguage = $("#namelang").val();
    	product.additionalInstruction = $("#ins").val();
+   	product.country = sessionStorage.getItem("country");
 
    	cart.push(product);
    	localStorage.setItem("jsonData",JSON.stringify(cart));
