@@ -7,7 +7,7 @@ div.gallery:hover {
 }
 
 div.gallery img {
-    width: 50%;
+    width: 100%;
     height: auto;
 }
 
@@ -71,4 +71,8 @@ a:link {
 
 .imgdiv{
     padding-bottom: 15px;
+}
+
+.container{
+    padding-top:20px;
 }
