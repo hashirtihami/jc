@@ -1,9 +1,9 @@
 function openNav() {
-    document.getElementById("myNav").style.height = "100%";
+    document.getElementById("myNavz").style.height = "100%";
 }
 window.onload = openNav;
 function closeNav() {
-    document.getElementById("myNav").style.height = "0%";
+    document.getElementById("myNavz").style.height = "0%";
 }
 
 

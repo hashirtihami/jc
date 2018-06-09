@@ -1,3 +1,54 @@
+.overlay {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-y: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    top: 25%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+
+
+.overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.submitbtn{
+    
+    position: absolute;
+    top: 120%;
+}
+.wrapperBtn{
+    text-align:center;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay {overflow-y: auto;}
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+
+
 div.gallery {
     border: 1px solid #ccc;
 }
@@ -70,17 +121,21 @@ a:link {
   float: left;
   width: 25%;
   margin-top: 6px;
-  padding-left:15px;
+  
+  color:white;
 }
 
 /* Floating column for inputs: 75% width */
-.col-75 {
+.col-70 {
   float: left;
-  width: 75%;
+  width: 65%;
   margin-top: 6px;
-  padding-left:15px;
-  padding-right:15px;
+  
+ 
 }
+
+
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -121,44 +176,5 @@ label {
 }
 
 
-//---------------------------------- overlay css --------------------------------------//
-
-.overlay {
-    height: 0%;
-    width: 100%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0, 0.9);
-    overflow-y: hidden;
-    transition: 0.5s;
-}
-
-.overlay-content {
-    position: relative;
-    top: 25%;
-    width: 100%;
-    text-align: center;
-    margin-top: 30px;
-}
 
 
-
-.overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 60px;
-}
-
-@media screen and (max-height: 450px) {
-  .overlay {overflow-y: auto;}
-  .overlay a {font-size: 20px}
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
