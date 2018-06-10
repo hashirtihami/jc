@@ -22,13 +22,14 @@ function submitFunction() {
 var prices = new object();
 prices.simpleLocket = 1500;
 prices.fancyLocket = 1600;
-prices.pearlLocketSingle = 1600;
+prices.pearlLocket = 1600;
 prices.heartLocket = 1600;
 prices.infinityLocket = 1700;
 prices.simpleRing= 1200;
 prices.calligraphSyRing= 1400;
 prices.infinityRing= 1500;
 prices.cufflinks = 1600;
+
 
 var charges = new object();
  charges.us = 1930;
