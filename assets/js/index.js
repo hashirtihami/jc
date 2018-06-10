@@ -38,8 +38,11 @@ function getData(){
 	$.ajax({
 		url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
 		success: function(data) {
-			sessionStorage.setItem("prices",data);
-			console.log(data);
+			var prices = new Object();
+			for(var i=0;i<data.length;i++){
+					prices[data[i][0]]=data[i][1];
+			}
+			sessionStorage.setItem("prices",JSON.stringify(prices));
 		}
 	})
 } 
