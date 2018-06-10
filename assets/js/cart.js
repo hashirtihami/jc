@@ -1,47 +1,83 @@
+
 var jsonData = JSON.parse(localStorage.getItem("jsonData"));
 
 if(JSON.parse(sessionStorage.getItem("cart")))
 	var cart = JSON.parse(sessionStorage.getItem("cart"));
 else
-	var cart = {};
+	var cart = [];
 
 for(var k in jsonData) cart[Object.keys(cart).length]=jsonData[k];
 localStorage.clear();
 sessionStorage.setItem("cart",JSON.stringify(cart));
 
-console.log(cart);
-
 for (var key in cart) {
     if (cart.hasOwnProperty(key)) {
 		var html = "";
-        html += "<li class='item'><img src='images/index/"+cart[key].product+".jpeg'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
-        		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td></tr>"+ 
+        /*html += "<li class='item'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
+        		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td><td>ID</td></tr>"+ 
         		"<tr><td>"+cart[key].productType.toUpperCase() +"</td><td>"+ cart[key].platingType.toUpperCase() +"</td><td>"+ cart[key].nameType.toUpperCase() +
         		"</td><td>"+ cart[key].nameOnProduct.toUpperCase() +"</td>"+"<td>"+ cart[key].nameLanguage.toUpperCase() +"</td><td>price</td><td>"+
-        		 cart[key].country.toUpperCase() +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";
+        		 cart[key].country.toUpperCase() +"</td><td>"+ cart[key].idVar +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";*/
+        html += "<div class='imgdiv col-lg-3 col-md-6 col-sm-12 col-xs-12'><div class='img-thumbnail'>"+
+            	"<img src='images/index/"+cart[key].product+".jpeg' class='image' style='width:100%''><div class='desc'>"+cart[key].productType+
+            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div></div><span><i class='fa fa-trash'></i></span>"+
+            	"<span class='id'>"+cart[key].idVar+"</span></div>";
 
-		$("ul").append(html);
+		$(".row").append(html);
     }
 }
 
-$("li").on("click", "span", function(event){
-	$(this).parent().fadeOut(500,function(){
+$("div").on("click", "span", function(event){
+	var index;
+	var id = $(this).parent().children(".id").html();
+	for(var i=0;i<cart.length;i++){
+		if(cart[i].idVar===id)
+			index = i;
+	}
+	cart.splice(index,1)
+	sessionStorage.setItem("cart",JSON.stringify(cart));
+	$(this).parent().parent().fadeOut(500,function(){
 		$(this).remove();
 	});
 	event.stopPropagation();
 });
 
 $("#checkout").on("click",function(e) {
-	for (var key in cart) {
+	var serialNo;
+	$.ajax({
+		url:"https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec?req=JSON",
+		success: function (data) {
+			serialNo = JSON.parse(data).serialNo;
+			for(var i=0;i<cart.length;i++){
+				cart[i].serialNo = serialNo+i;
+				$.ajax({
+				    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
+				    method: "GET",
+				    dataType: "json",
+				    data: cart[i]
+				});
+			}
+			console.log(cart);
+		}
+	});
+
+	/*for (var key in cart) {
+		console.log(key);
 	    if (cart.hasOwnProperty(key)) {
 			e.preventDefault();
-		  	var jqxhr = $.ajax({
-			    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
-			    method: "GET",
-			    dataType: "json",
-			    data: cart[key]
-		    });
-		    console.log(jqxhr);
+			$.ajax({
+				url:"https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec?req=JSON",
+				success: function (data) {
+					cart[key].serialNo = JSON.parse(data).serialNo+parseInt(key);
+					var jqxhr = $.ajax({
+					    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
+					    method: "GET",
+					    dataType: "json",
+					    data: cart[key]
+				    });
+				    //console.log(cart);
+				}
+			});
 		}
-	}
+	}*/
 });

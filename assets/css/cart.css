@@ -1,43 +1,37 @@
+.id {
+	display: none;
+}
+
 img {
-	width: 150px;
-	margin: 20px 10px;
+	width: 100px;
 	border-radius: 10px;
-	vertical-align: middle;
 }
 
-span {
-	float: right;
+td {
+	padding: 5%;
+	padding-bottom: 0;
+	padding-top: 0;
 }
 
-.item {
-	border: 1px solid steelblue;
-	padding: 5px;
-	margin: 10px auto;
-	overflow: auto;
-	border-radius: 10px;
+span{
+	font-size: 20px;
 }
 
 h1 {
 	text-align: center;
 }
 
-table {
-	display: inline;
-	margin: 15px;
-}
-
-h4 {
-	margin: 0;
-	margin-bottom: 10px;
-	display: inline;
-}
-
-td {
-	padding: 10px;
-	border: 1px solid gray;
-}
 
 #footer div {
 	float: right;
 	margin: 5px;
+}
+
+.imgdiv{
+    padding-bottom: 15px;
+}
+
+div.desc {
+    padding: 5px;
+    text-align: center;
 }
