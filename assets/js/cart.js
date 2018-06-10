@@ -36,8 +36,7 @@ $("#checkout").on("click",function(e) {
 	    if (cart.hasOwnProperty(key)) {
 			e.preventDefault();
 		  	var jqxhr = $.ajax({
-			    //url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
-			    url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
+			    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
 			    method: "GET",
 			    dataType: "json",
 			    data: cart[key]
