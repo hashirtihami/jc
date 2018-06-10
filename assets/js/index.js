@@ -2,7 +2,10 @@ function openNav() {
     document.getElementById("myNavz").style.height = "100%";
 }
 
-window.onload = openNav();
+window.onload = function () {
+	getData();
+	openNav();
+};
 
 function closeNav() {
 	sessionStorage.setItem("country",$("#country").val());
@@ -31,3 +34,12 @@ $(".cuff").on("click",function() {
 	console.log(sessionStorage);
 });
 
+function getData(){
+	$.ajax({
+		url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
+		success: function(data) {
+			sessionStorage.setItem("prices",data);
+			console.log(data);
+		}
+	})
+} 
