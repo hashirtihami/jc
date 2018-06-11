@@ -99,3 +99,8 @@ a:link {
 .maincon {
   display: none;
 }
+
+#wait {
+  text-align: center;
+  margin-top: 10%;
+}

@@ -8,7 +8,7 @@ var ID = function () {
 };
 
 function setup(){
-	$(".maincon").fadeIn(2000,function () {
+	$(".maincon").fadeIn(1000,function () {
 	});
 }
 
@@ -28,7 +28,9 @@ function getData(){
 }
 
 window.onload = function () {
-	setup();
+	$("#wait").fadeOut(1000,function(){
+		setup();
+	});
 	getData();
 }
 
@@ -111,7 +113,7 @@ var charges = new object();
  charges.france = 2265;
  charges.germany = 2182;
  charges.greece = 2182;
- charges.hong Kong = 1678;
+ charges.hongKong = 1678;
  charges.hungary = 2349;	
  charges.indonesia = 2098;
  charges.iran = 2349;

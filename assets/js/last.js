@@ -12,7 +12,8 @@ $("#submitButton").on("click",function(e) {
 		url:"https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec?req=JSON",
 		success: function (data) {
 			serialNo = JSON.parse(data).serialNo;
-			for(var i=cart.length-1;i>=0;i--){
+			console.log(serialNo);
+			for(var i=0;i<cart.length;i++){
 				cart[i].serialNo = serialNo+i;
 				cart[i].fullName = $("#name").val();
 				cart[i].address = $("#address").val();
@@ -26,6 +27,13 @@ $("#submitButton").on("click",function(e) {
 				    data: cart[i]
 				});
 			}
+			console.log(cart[i-1].serialNo);
+			$.ajax({
+				url: "https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec",
+				method: "GET",
+				dataType: "json",
+				data: cart[i-1]
+			})
 		}
 	});
 
