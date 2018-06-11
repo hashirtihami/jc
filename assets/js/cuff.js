@@ -3,3 +3,5 @@ $(".simple").on("click",function() {
 	console.log(sessionStorage);
 });
 
+$(".container").fadeIn("slow",function(){
+});

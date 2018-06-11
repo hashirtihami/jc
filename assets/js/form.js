@@ -1,20 +1,46 @@
 var cart = [];
-
+var price = JSON.parse(sessionStorage.getItem("prices"));
 var ID = function () {
 // Math.random should be unique because of its seeding algorithm.
 // Convert it to base 36 (numbers + letters), and grab the first 9 characters
 // after the decimal.
   return '_' + Math.random().toString(36).substr(2, 9);
 };
-console.log(ID());
 
+function setup(){
+	$(".maincon").fadeIn(2000,function () {
+	});
+}
 
+function getData(){
+	$.ajax({
+		url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
+		success: function(data) {
+			var prices = new Object();
+			for(var i=0;i<data.length;i++){
+					prices[data[i][0]]=data[i][1];
+			}
+			sessionStorage.setItem("prices",JSON.stringify(prices));
+			console.log(prices);
+			price = JSON.parse(sessionStorage.getItem("prices"));
+		}
+	})
+}
+
+window.onload = function () {
+	setup();
+	getData();
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 //function to fill form data in products object
-function submitFunction() {
+/*function submitFunction() {
 
 	var product = new Object();
-	product.product = sessionStorage.getItem("product");
-	product.productType = sessionStorage.getItem("productType");
+	product.product = capitalizeFirstLetter(sessionStorage.getItem("product"));
+	product.productType = capitalizeFirstLetter(sessionStorage.getItem("productType"));
 	product.platingType = $("#plating").val();
 	product.nameType = $("#ntype").val();
 	product.nameOnProduct = $("#nameonp").val();
@@ -22,12 +48,28 @@ function submitFunction() {
    	product.additionalInstruction = $("#ins").val();
    	product.country = sessionStorage.getItem("country");
    	product.idVar = ID();
-
+   	var priceVar = sessionStorage.getItem("productType")+product.product;
+   	product.price = prices[priceVar];
    	cart.push(product);
    	localStorage.setItem("jsonData",JSON.stringify(cart));
-}
+}*/
 
-
+$("#submitButton").on("click",function (argument) {
+	var product = new Object();
+	product.product = capitalizeFirstLetter(sessionStorage.getItem("product"));
+	product.productType = capitalizeFirstLetter(sessionStorage.getItem("productType"));
+	product.platingType = $("#plating").val();
+	product.nameType = $("#ntype").val();
+	product.nameOnProduct = $("#nameonp").val();
+	product.nameLanguage = $("#namelang").val();
+   	product.additionalInstruction = $("#ins").val();
+   	product.country = sessionStorage.getItem("country");
+   	product.idVar = ID();
+   	var priceVar = sessionStorage.getItem("productType")+product.product;
+   	product.price = price[priceVar];
+   	cart.push(product);
+   	localStorage.setItem("jsonData",JSON.stringify(cart));
+});
 /*var additional = 250;
 
 var prices = new object();

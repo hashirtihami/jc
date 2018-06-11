@@ -7,3 +7,6 @@ $(".heart").on("click",function() {
 	sessionStorage.setItem("productType","heart");
 	console.log(sessionStorage);
 });
+
+$(".container").fadeIn("slow",function(){
+});

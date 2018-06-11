@@ -3,7 +3,6 @@ function openNav() {
 }
 
 window.onload = function () {
-	getData();
 	if(!sessionStorage.getItem("country"))
 		openNav();
 };
@@ -33,17 +32,7 @@ $(".cuff").on("click",function() {
 	sessionStorage.setItem("product","cufflinks");
 	sessionStorage.setItem("productType","none");
 	console.log(sessionStorage);
-});
+}); 
 
-function getData(){
-	$.ajax({
-		url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
-		success: function(data) {
-			var prices = new Object();
-			for(var i=0;i<data.length;i++){
-					prices[data[i][0]]=data[i][1];
-			}
-			sessionStorage.setItem("prices",JSON.stringify(prices));
-		}
-	})
-} 
+$(".container").fadeIn("slow",function(){
+});

@@ -20,3 +20,6 @@ window.onload = function(){
 	$(".calligraphy span").html(prices.calligraphyRing);
 	$(".infinity span").html(prices.infinityRing);
 };
+
+$(".container").fadeIn("slow",function(){
+});

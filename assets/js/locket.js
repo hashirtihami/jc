@@ -31,3 +31,6 @@ window.onload = function(){
 	$(".infinity span").html(prices.infinityLocket);
 	$(".pearl span").html(prices.pearlLocket);
 };
+
+$(".container").fadeIn("slow",function(){
+});

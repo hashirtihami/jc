@@ -95,3 +95,7 @@ a:link {
     right: 10px; 
     
 }
+
+.maincon {
+  display: none;
+}

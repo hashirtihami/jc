@@ -1,6 +1,5 @@
-
 var jsonData = JSON.parse(localStorage.getItem("jsonData"));
-
+var total = 0;
 if(JSON.parse(sessionStorage.getItem("cart")))
 	var cart = JSON.parse(sessionStorage.getItem("cart"));
 else
@@ -10,8 +9,11 @@ for(var k in jsonData) cart[Object.keys(cart).length]=jsonData[k];
 localStorage.clear();
 sessionStorage.setItem("cart",JSON.stringify(cart));
 
+console.log(cart);
+
 for (var key in cart) {
     if (cart.hasOwnProperty(key)) {
+    	total += cart[key].price;
 		var html = "";
         /*html += "<li class='item'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
         		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td><td>ID</td></tr>"+ 
@@ -20,10 +22,11 @@ for (var key in cart) {
         		 cart[key].country.toUpperCase() +"</td><td>"+ cart[key].idVar +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";*/
         html += "<div class='imgdiv col-lg-3 col-md-6 col-sm-12 col-xs-12'><div class='img-thumbnail'>"+
             	"<img src='images/index/"+cart[key].product+".jpeg' class='image' style='width:100%''><div class='desc'>"+cart[key].productType+
-            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div></div><span><i class='fa fa-trash'></i></span>"+
+            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div><div class='desc'>"+"Price: "+cart[key].price+"</div></div><span><i class='fa fa-trash'></i></span>"+
             	"<span class='id'>"+cart[key].idVar+"</span></div>";
 
 		$(".row").append(html);
+		$("#total").html(total);
     }
 }
 
@@ -34,15 +37,17 @@ $("div").on("click", "span", function(event){
 		if(cart[i].idVar===id)
 			index = i;
 	}
+	total -= cart[index].price;
 	cart.splice(index,1)
 	sessionStorage.setItem("cart",JSON.stringify(cart));
 	$(this).parent().parent().fadeOut(500,function(){
+		$("#total").html(total);
 		$(this).remove();
 	});
 	event.stopPropagation();
 });
 
-$("#checkout").on("click",function(e) {
+/*$("#checkout").on("click",function(e) {
 	var serialNo;
 	$.ajax({
 		url:"https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec?req=JSON",
@@ -61,23 +66,4 @@ $("#checkout").on("click",function(e) {
 		}
 	});
 
-	/*for (var key in cart) {
-		console.log(key);
-	    if (cart.hasOwnProperty(key)) {
-			e.preventDefault();
-			$.ajax({
-				url:"https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec?req=JSON",
-				success: function (data) {
-					cart[key].serialNo = JSON.parse(data).serialNo+parseInt(key);
-					var jqxhr = $.ajax({
-					    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
-					    method: "GET",
-					    dataType: "json",
-					    data: cart[key]
-				    });
-				    //console.log(cart);
-				}
-			});
-		}
-	}*/
-});
+});*/
