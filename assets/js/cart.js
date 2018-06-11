@@ -1,22 +1,8 @@
-function getData(){
-	$.ajax({
-		url: "https://script.google.com/macros/s/AKfycbys0Zi7pHzAL_fPkkOFOUSaOm1tjma1PVPdtrHmk5U0MHQo6paI/exec",
-		success: function(data) {
-			var intRatesJSON = new Object();
-			for(var i=0;i<data.length;i++){
-					intRatesJSON[data[i][0]]=data[i][1];
-			}
-			sessionStorage.setItem("intRates",JSON.stringify(intRatesJSON));
-			console.log(intRatesJSON);	
-		}
-	})
-}
-
 window.onload = function(){
+	var intRates = JSON.parse(sessionStorage.getItem("intRates"));
 	$("#wait").fadeOut(1000,function(){
 		$(".itemContainer").fadeIn(2000,function(){});
 	})
-	getData();
 	for (var key in cart) {
 	    if (cart.hasOwnProperty(key)) {
 	    	if(cart[key].country!=='pakistan'){
@@ -39,10 +25,7 @@ window.onload = function(){
 			$("#total").html(total);
 	    }
 	}	
-}
-
-var intRates = JSON.parse(sessionStorage.getItem("intRates"));	
-console.log(intRates);
+}	
 
 var jsonData = JSON.parse(localStorage.getItem("jsonData"));
 var total = 0;
