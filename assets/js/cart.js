@@ -8,6 +8,7 @@ window.onload = function(){
 	    	if(cart[key].country!=='pakistan'){
 	    		var country = cart[key].country;
 	    		cart[key].price = cart[key].price+intRates[country];
+	    		$("h6 span").html("International Charges "+intRates[country]+" per item");
 	    	}
 	    	total += cart[key].price;
 			var html = "";
