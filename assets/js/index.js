@@ -4,7 +4,8 @@ function openNav() {
 
 window.onload = function () {
 	getData();
-	openNav();
+	if(!sessionStorage.getItem("country"))
+		openNav();
 };
 
 function closeNav() {
