@@ -3,13 +3,21 @@ function openNav() {
 }
 
 window.onload = function () {
-	if(!sessionStorage.getItem("country"))
+	if(!sessionStorage.getItem("country")){
 		openNav();
+	}
+	else {
+		$(".container").fadeIn(1000,function(){
+	    })
+	}
 };
 
 function closeNav() {
 	sessionStorage.setItem("country",$("#country").val());
     document.getElementById("myNavz").style.height = "0%";
+    $(".container").fadeIn(1000,function(){
+    });
+    $(".container").css("display","flex");
 }
 
 
@@ -34,5 +42,3 @@ $(".cuff").on("click",function() {
 	console.log(sessionStorage);
 }); 
 
-$(".container").fadeIn("slow",function(){
-});
