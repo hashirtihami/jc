@@ -284,3 +284,12 @@ a:link {
 .maindiv{
     padding-top:20px;
 }
+
+.addcharge{
+color:white;
+  text-align:center;
+  position:fixed;
+  bottom:5px;
+  right:20px;
+
+}
