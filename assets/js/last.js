@@ -16,7 +16,7 @@ $("#submitButton").on("click",function() {
 				serialNo = JSON.parse(data).serialNo;
 				console.log(serialNo);
 				for(var i=0;i<cart.length;i++){
-					cart[i].serialNo = serialNo+i;
+					cart[i].serialNo = serialNo+i+1;
 					cart[i].fullName = $("#name").val();
 					cart[i].address = $("#address").val();
 					cart[i].city = $("#city").val();
