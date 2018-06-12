@@ -69,7 +69,7 @@ $("#mainForm").on("submit",function(e){
 });
 
 
-if(productType==zodiac)
-document.getElementById("nameorzodiac").innerHTML= "Name On product"
+if(productTypee="zodiac")
+document.getElementById("nameorzodiac").innerHTML= "Your Zodiac Sign:"
 else
-document.getElementById("nameorzodiac").innerHTML= "Zodiac Sign"
+document.getElementById("nameorzodiac").innerHTML= "Name on Product:"
