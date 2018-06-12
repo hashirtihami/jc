@@ -67,3 +67,9 @@ $("#mainForm").on("submit",function(e){
    	cart.push(product);
    	localStorage.setItem("jsonData",JSON.stringify(cart));
 });
+
+
+if(productType==zodiac)
+document.getElementById("nameorzodiac").innerHTML= "Name On product"
+else
+document.getElementById("nameorzodiac").innerHTML= "Zodiac Sign"
