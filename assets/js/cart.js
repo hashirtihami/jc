@@ -3,28 +3,42 @@ window.onload = function(){
 	$("#wait").fadeOut(1000,function(){
 		$(".itemContainer").fadeIn(2000,function(){});
 	})
-	for (var key in cart) {
-	    if (cart.hasOwnProperty(key)) {
-	    	if(cart[key].country!=='pakistan'){
-	    		var country = cart[key].country;
-	    		cart[key].price = cart[key].price+intRates[country];
-	    		$("h6 span").html("International Charges "+intRates[country]+" per item");
-	    	}
-	    	total += cart[key].price;
-			var html = "";
-	        /*html += "<li class='item'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
-	        		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td><td>ID</td></tr>"+ 
-	        		"<tr><td>"+cart[key].productType.toUpperCase() +"</td><td>"+ cart[key].platingType.toUpperCase() +"</td><td>"+ cart[key].nameType.toUpperCase() +
-	        		"</td><td>"+ cart[key].nameOnProduct.toUpperCase() +"</td>"+"<td>"+ cart[key].nameLanguage.toUpperCase() +"</td><td>price</td><td>"+
-	        		 cart[key].country.toUpperCase() +"</td><td>"+ cart[key].idVar +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";*/
-	        html += "<div class='imgdiv col-lg-3 col-md-6 col-sm-12 col-xs-12'><div class='img-thumbnail'>"+
-	            	"<img src='images/index/"+cart[key].product+".jpeg' class='image' style='width:100%''><div class='desc'>"+cart[key].productType+
-	            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div><div class='desc'>"+"Price: "+cart[key].price+"</div></div><span><i class='fa fa-trash'></i></span>"+
-	            	"<span class='id'>"+cart[key].idVar+"</span></div>";
+	if(cart.length!==0){
+		for (var key in cart) {
+		    if (cart.hasOwnProperty(key)) {
+		    	if(cart[key].country!=='pakistan'){
+		    		var country = cart[key].country;
+		    		cart[key].price = cart[key].price+intRates[country];
+		    		$("h6 span").html("International Charges "+intRates[country]+" PKR per item");
+		    	}
+		    	if(cart[key].nameType!=='sname'){
+		    		cart[key].price += 100;
+		    		$("#footer").append("<h6><span>Double Name charges: 100 PKR per item</span></h6>");
+		    	}
+		    	if(cart[key].nameLanguage!=='english'){
+		    		cart[key].price += 100;
+		    		$("#footer").append("<h6><span>"+ cart[key].nameLanguage.toUpperCase() +" language charges: 100 PKR per item</span></h6>");
+		    	}
+		    	total += cart[key].price;
+				var html = "";
+		        /*html += "<li class='item'><h4>"+ cart[key].product.toUpperCase() +"</h4>"+
+		        		"<table><tr><td>Product Type</td><td>Plating Type</td><td>Name Type</td><td>Name On Product</td><td>Language</td><td>Price</td><td>Country</td><td>ID</td></tr>"+ 
+		        		"<tr><td>"+cart[key].productType.toUpperCase() +"</td><td>"+ cart[key].platingType.toUpperCase() +"</td><td>"+ cart[key].nameType.toUpperCase() +
+		        		"</td><td>"+ cart[key].nameOnProduct.toUpperCase() +"</td>"+"<td>"+ cart[key].nameLanguage.toUpperCase() +"</td><td>price</td><td>"+
+		        		 cart[key].country.toUpperCase() +"</td><td>"+ cart[key].idVar +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";*/
+		        html += "<div class='imgdiv col-lg-3 col-md-6 col-sm-12 col-xs-12'><div class='img-thumbnail'>"+
+		            	"<img src='images/index/"+cart[key].product+".jpeg' class='image' style='width:100%''><div class='desc'>"+cart[key].productType+
+		            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div><div class='desc'>"+"Price: "+cart[key].price+"</div></div><span><i class='fa fa-trash'></i></span>"+
+		            	"<span class='id'>"+cart[key].idVar+"</span></div>";
 
-			$(".row").append(html);
-			$("#total").html(total);
-	    }
+				$(".row").append(html);
+				$("#total").html(total);
+		    }
+		}
+	}
+	else {
+		$(".row").append("<p>Cart is empty</p>");
+		$("p").addClass("empty");
 	}	
 }	
 
