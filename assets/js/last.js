@@ -16,7 +16,7 @@ $("#submitButton").on("click",function() {
 				serialNo = JSON.parse(data).serialNo;
 				console.log(serialNo);
 				for(var i=0;i<cart.length;i++){
-					cart[i].serialNo = serialNo+i+1;
+					cart[i].serialNo = "CL-"+serialNo;
 					cart[i].fullName = $("#name").val();
 					cart[i].address = $("#address").val();
 					cart[i].city = $("#city").val();
@@ -29,18 +29,17 @@ $("#submitButton").on("click",function() {
 					    data: cart[i]
 					});
 				}
-				console.log(cart[i-1].serialNo);
 				$.ajax({
 					url: "https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec",
 					method: "GET",
 					dataType: "json",
-					data: cart[i-1]
+					data: {"serialNo": serialNo+1}
 				})
 			}
 		});
 
 		$(".form").fadeOut(2000,function(){
-			window.location.assign("thankyou.html");
+			window.location.assign("receipt.html");
 		});
 	});
 });

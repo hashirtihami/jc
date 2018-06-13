@@ -15,6 +15,7 @@ window.onload = function () {
 function closeNav() {
 	sessionStorage.setItem("country",$("#country").val());
     document.getElementById("myNavz").style.height = "0%";
+    setTimeout(function(){ $("#myNavz").remove(); }, 500);
     $(".container").fadeIn(1000,function(){
     });
     $(".container").css("display","flex");

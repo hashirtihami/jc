@@ -38,18 +38,21 @@ function getData(){
 	})
 }
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 window.onload = function () {
 	getData();
 	getIntRates();
 	$("#wait").fadeOut(1000,function(){
 		setup();
 	});
+	if(sessionStorage.productType==='zodiac')
+		$(".name").css("display","none").remove();
+	else
+		$(".zodiac").css("display","none").remove();
 }
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 
 $("#mainForm").on("submit",function(e){
 	var product = new Object();
@@ -57,7 +60,7 @@ $("#mainForm").on("submit",function(e){
 	product.productType = capitalizeFirstLetter(sessionStorage.getItem("productType"));
 	product.platingType = $("#plating").val();
 	product.nameType = $("#ntype").val();
-	product.nameOnProduct = $("#nameonp").val();
+	product.nameOnProduct = capitalizeFirstLetter($("#nameonp").val());
 	product.nameLanguage = $("#namelang").val();
    	product.additionalInstruction = $("#ins").val();
    	product.country = sessionStorage.getItem("country");
@@ -69,7 +72,7 @@ $("#mainForm").on("submit",function(e){
 });
 
 
-if(productTypee="zodiac")
+/*if(productTypee="zodiac")
 document.getElementById("nameorzodiac").innerHTML= "Your Zodiac Sign:"
 else
-document.getElementById("nameorzodiac").innerHTML= "Name on Product:"
+document.getElementById("nameorzodiac").innerHTML= "Name on Product:"*/

@@ -11,13 +11,16 @@ window.onload = function(){
 		    		cart[key].price = cart[key].price+intRates[country];
 		    		$("h6 span").html("International Charges "+intRates[country]+" PKR per item");
 		    	}
-		    	if(cart[key].nameType!=='sname'){
-		    		cart[key].price += 100;
-		    		$("#footer").append("<h6><span>Double Name charges: 100 PKR per item</span></h6>");
-		    	}
+		    	if(cart[key].productType!=='Zodiac'){
+			    	if(cart[key].nameType!=='sname'){
+			    		cart[key].price += 100;
+			    		$("#nameType").html("<span>Double Name charges: 100 PKR per item</span>");
+			    		console.log(cart);
+			    	}
+			    }
 		    	if(cart[key].nameLanguage!=='english'){
 		    		cart[key].price += 100;
-		    		$("#footer").append("<h6><span>"+ cart[key].nameLanguage.toUpperCase() +" language charges: 100 PKR per item</span></h6>");
+		    		$("#language").html("<span>"+ cart[key].nameLanguage.toUpperCase() +" language charges: 100 PKR per item</span>");
 		    	}
 		    	total += cart[key].price;
 				var html = "";
@@ -53,7 +56,7 @@ for(var k in jsonData) cart[Object.keys(cart).length]=jsonData[k];
 localStorage.clear();
 sessionStorage.setItem("cart",JSON.stringify(cart));
 
-$("div").on("click", "span", function(event){
+$("div.items").on("click", "span", function(event){
 	var index;
 	var id = $(this).parent().children(".id").html();
 	for(var i=0;i<cart.length;i++){
@@ -66,6 +69,10 @@ $("div").on("click", "span", function(event){
 	$(this).parent().parent().fadeOut(500,function(){
 		$("#total").html(total);
 		$(this).remove();
+		if(cart.length===0){
+			$(".row").append("<p>Cart is empty</p>");
+			$("p").addClass("empty");
+		}
 	});
 	event.stopPropagation();
 });
