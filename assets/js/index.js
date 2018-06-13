@@ -9,6 +9,7 @@ window.onload = function () {
 	else {
 		$(".container").fadeIn(1000,function(){
 	    })
+	    setTimeout(function(){ $("#myNavz").remove(); }, 100);
 	}
 };
 

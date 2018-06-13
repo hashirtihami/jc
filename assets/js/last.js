@@ -1,10 +1,13 @@
 var cart = JSON.parse(sessionStorage.getItem("cart"));
 
-function openNav() {
-    document.getElementById("myNavz").style.height = "100%";
+function setup(){
+	$(".container").fadeIn(1000,function () {
+	});
 }
 
-window.onload = openNav;
+window.onload = function(){
+	setup();
+}
 
 $("#submitButton").on("click",function() {
 	$("form").on("submit",function(e){
@@ -37,8 +40,8 @@ $("#submitButton").on("click",function() {
 				})
 			}
 		});
-
 		$(".form").fadeOut(2000,function(){
+			sessionStorage.setItem("cart",JSON.stringify(cart));
 			window.location.assign("receipt.html");
 		});
 	});

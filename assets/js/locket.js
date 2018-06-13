@@ -28,15 +28,5 @@ $(".zodiac").on("click",function() {
 	console.log(sessionStorage);
 })
 
-
-window.onload = function(){
-	var prices = JSON.parse(sessionStorage.getItem("prices"));
-	$(".simple span").html(prices.simpleLocket);
-	$(".heart span").html(prices.heartLocket);
-	$(".fancy span").html(prices.fancyLocket);
-	$(".infinity span").html(prices.infinityLocket);
-	$(".pearl span").html(prices.pearlLocket);
-};
-
 $(".container").fadeIn("slow",function(){
 });

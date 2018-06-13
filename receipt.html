@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title> Cart </title>
+  <link rel='shortcut icon' type='image/x-icon' href='icon/favicon.ico' />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Fjalla+One|Josefin+Sans:400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="assets/css/receipt.css">
+  <script type="text/javascript" src="assets/js/lib/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script defer src ="icons/js/fontawesome-all.js"> </script>
+  <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+ </head>
+
+<body>
+  <div class="container">
+    <div id="receipt">
+      <div class="homediv">
+        <h1 class="homecontent"> Jewel Circle </h1>
+      </div>
+      <hr>
+      <table>
+        <tr>
+          <td><h4>Order Receipt</h4></td>
+          <td class="align">Order ID: <span id="orderID"></span></td>
+        </tr>
+      </table>
+      <hr>
+      <table>
+        <tr>
+          <td><h5>Purchased By:</h5></td>
+          <td class="align"><h5>Purchased From:</h5></td>
+        </tr>
+        <tr>
+          <td>Buyer Name: <span id="name"></span></td>
+          <td class="align">Jewel Circle</td>
+        </tr>
+        <tr>
+          <td>Buyer Email: <span id="email"></span></td>
+        </tr>   
+        <tr>
+          <td>Buyer Address: <span id="address"></span></td>
+        </tr>
+      </table>
+      <hr>
+      <h4>Order Summary</h4>
+      <table id="summary">
+        <tr>
+          <th>Serial No</th>
+          <th>Item</th>
+          <th>Name on Product</th>
+          <th>Plating Type</th>
+          <th>Price</th>
+        </tr>
+      </table>
+      <hr>
+      <p class="align">Total: PKR <span id="total"></span></p>
+      <hr>
+      <svg id="barcode"></svg>
+    </div>
+    <a href="" id="download"><button>Download</button></a>
+    <!--<a id="download" href="#">Download</a>-->
+  </div>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script> 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+  <script type="text/javascript" src="assets/js/lib/html2canvas.min.js"></script>
+  <script type="text/javascript" src="assets/js/receipt.js"></script>
+
+
+
+</body>
+</html>
