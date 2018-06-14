@@ -7,9 +7,12 @@ window.onload = function(){
 		for (var key in cart) {
 		    if (cart.hasOwnProperty(key)) {
 		    	if(cart[key].country!=='pakistan'){
-		    		var country = cart[key].country;
-		    		cart[key].price = cart[key].price+intRates[country];
-		    		$("h6 span").html("International Charges "+intRates[country]+" PKR per item");
+		    		if(!cart[key].shippingAdded){
+			    		var country = cart[key].country;
+			    		cart[key].price = cart[key].price+intRates[country];
+			    		cart[key].shippingAdded = true;
+			    		}
+			    	$("h6 span").html("Shipping Charges "+intRates[country]+" PKR per item");
 		    	}
 		    	if(cart[key].productType!=='Zodiac'){
 			    	if(cart[key].nameType!=='sname'){
@@ -17,6 +20,9 @@ window.onload = function(){
 			    		$("#nameType").html("<span>Double Name charges: 100 PKR per item</span>");
 			    		console.log(cart);
 			    	}
+			    }
+			    else{
+			    	cart[key].nameLanguage = "english";
 			    }
 		    	if(cart[key].nameLanguage!=='english'){
 		    		cart[key].price += 100;
@@ -31,8 +37,8 @@ window.onload = function(){
 		        		 cart[key].country.toUpperCase() +"</td><td>"+ cart[key].idVar +"</td></tr></table><span><i class='fa fa-trash'></i></span></li>";*/
 		        html += "<div class='imgdiv col-lg-3 col-md-6 col-sm-12 col-xs-12'><div class='img-thumbnail'>"+
 		            	"<img src='images/index/"+cart[key].product+".jpeg' class='image' style='width:100%''><div class='desc'>"+cart[key].productType+
-		            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div><div class='desc'>"+"Price: "+cart[key].price+"</div></div><span><i class='fa fa-trash'></i></span>"+
-		            	"<span class='id'>"+cart[key].idVar+"</span></div>";
+		            	" "+cart[key].product+"<div class='desc'>"+"Name: "+cart[key].nameOnProduct+"</div><div class='desc'>"+"Price: "+cart[key].price+"</div><div class='desc'>"+
+		            	"Name Language: "+cart[key].nameLanguage.toUpperCase()+"</div></div><span><i class='fa fa-trash'></i></span>"+"<span class='id'>"+cart[key].idVar+"</span></div>";
 
 				$(".row").append(html);
 				$("#total").html(total);
@@ -72,6 +78,7 @@ $("div.items").on("click", "span", function(event){
 		if(cart.length===0){
 			$(".row").append("<p>Cart is empty</p>");
 			$("p").addClass("empty");
+			$("h6").html("<span></span>")
 		}
 	});
 	event.stopPropagation();
