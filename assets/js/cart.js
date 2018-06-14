@@ -21,9 +21,6 @@ window.onload = function(){
 			    		console.log(cart);
 			    	}
 			    }
-			    else{
-			    	cart[key].nameLanguage = "english";
-			    }
 		    	if(cart[key].nameLanguage!=='english'){
 		    		cart[key].price += 100;
 		    		$("#language").html("<span>"+ cart[key].nameLanguage.toUpperCase() +" language charges: 100 PKR per item</span>");
