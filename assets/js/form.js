@@ -61,7 +61,10 @@ $("#mainForm").on("submit",function(e){
 	product.platingType = $("#plating").val();
 	product.nameType = $("#ntype").val();
 	product.nameOnProduct = capitalizeFirstLetter($("#nameonp").val());
-	product.nameLanguage = $("#namelang").val();
+	if(sessionStorage.productType!=='zodiac')
+		product.nameLanguage = $("#namelang").val();
+	else
+		product.nameLanguage = "english";
    	product.additionalInstruction = $("#ins").val();
    	product.country = sessionStorage.getItem("country");
    	product.idVar = ID();
