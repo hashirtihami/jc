@@ -1,7 +1,7 @@
 if(JSON.parse(sessionStorage.getItem("cart"))){
     var cart = JSON.parse(sessionStorage.getItem("cart"));
-    var total = 0;
     console.log(cart);
+    var total = 0;
     $("#name").html(cart[0].fullName);
     $("#email").html(cart[0].email);
     $("#orderID").html(cart[0].serialNo);
