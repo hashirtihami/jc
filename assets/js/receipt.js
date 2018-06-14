@@ -31,7 +31,7 @@ if(JSON.parse(sessionStorage.getItem("cart"))){
         });
     });
     localStorage.setItem("receipt",$(".container").html());
-    sessionStorage.clear();
+    setTimeout(function(){sessionStorage.clear()},2000);
 }
 else {
     $(".container").html(localStorage.getItem("receipt"));

@@ -1,5 +1,4 @@
 var cart = JSON.parse(sessionStorage.getItem("cart"));
-
 function setup(){
 	$(".container").fadeIn(1000,function () {
 	});
@@ -25,7 +24,6 @@ $("#submitButton").on("click",function() {
 					cart[i].city = $("#city").val();
 					cart[i].contactNo = $("#cno").val();
 					cart[i].email = $("#email").val();
-					sessionStorage.setItem("cart",JSON.stringify(cart));
 					$.ajax({
 					    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
 					    method: "GET",
@@ -38,7 +36,8 @@ $("#submitButton").on("click",function() {
 					method: "GET",
 					dataType: "json",
 					data: {"serialNo": serialNo+1}
-				})
+				});
+				sessionStorage.setItem("cart",JSON.stringify(cart));
 			}
 		});
 		$(".form").fadeOut(2000,function(){
