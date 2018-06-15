@@ -11,19 +11,28 @@ window.onload = function(){
 			    		var country = cart[key].country;
 			    		cart[key].price = cart[key].price+intRates[country];
 			    		cart[key].shippingAdded = true;
+			    		sessionStorage.setItem("cart",JSON.stringify(cart));
 			    		}
 			    	$("h6 span").html("Shipping Charges "+intRates[country]+" PKR per item");
 		    	}
 		    	if(cart[key].productType!=='Zodiac'){
 			    	if(cart[key].nameType!=='sname'){
-			    		cart[key].price += 100;
-			    		$("#nameType").html("<span>Double Name charges: 100 PKR per item</span>");
-			    		console.log(cart);
+			    		if(!cart[key].dnameAdded){
+				    		cart[key].price += 100;
+				    		cart[key].dnameAdded = true;
+				    		sessionStorage.setItem("cart",JSON.stringify(cart));
+				    		$("#nameType").html("<span>Double Name charges: 100 PKR per item</span>");
+				    		console.log(cart);
+			    		}
 			    	}
 			    }
 		    	if(cart[key].nameLanguage!=='english'){
-		    		cart[key].price += 100;
-		    		$("#language").html("<span>"+ cart[key].nameLanguage.toUpperCase() +" language charges: 100 PKR per item</span>");
+		    		if(!cart[key].languageAdded){
+			    		cart[key].price += 100;
+				    	cart[key].languageAdded = true;
+			    		sessionStorage.setItem("cart",JSON.stringify(cart));
+			    		$("#language").html("<span>"+ cart[key].nameLanguage.toUpperCase() +" language charges: 100 PKR per item</span>");
+		    		}
 		    	}
 		    	total += cart[key].price;
 				var html = "";
