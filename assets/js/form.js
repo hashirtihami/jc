@@ -4,27 +4,16 @@ var ID = function () {
   return '_' + Math.random().toString(36).substr(2, 9);
 };
 
-function getIntRates(){
-	$.ajax({
-		url: "https://script.google.com/macros/s/AKfycbys0Zi7pHzAL_fPkkOFOUSaOm1tjma1PVPdtrHmk5U0MHQo6paI/exec",
-		success: function(data) {
-			var intRatesJSON = new Object();
-			for(var i=0;i<data.length;i++){
-					intRatesJSON[data[i][0]]=data[i][1];
-			}
-			sessionStorage.setItem("intRates",JSON.stringify(intRatesJSON));
-			console.log(intRatesJSON);	
-		}
-	})
-}
-
 function setup(){
 	$(".maincon").fadeIn(1000,function () {
 	});
 }
 
-function getData(){
-	$.ajax({
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+$.when($.ajax({
 		url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
 		success: function(data) {
 			var prices = new Object();
@@ -35,24 +24,31 @@ function getData(){
 			console.log(prices);
 			price = JSON.parse(sessionStorage.getItem("prices"));
 		}
-	})
-}
-
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-window.onload = function () {
-	getData();
-	getIntRates();
-	$("#wait").fadeOut(1000,function(){
-		setup();
-	});
-	if(sessionStorage.productType==='zodiac')
-		$(".name").css("display","none").remove();
-	else
-		$(".zodiac").css("display","none").remove();
-}
+	}),
+	$.ajax({
+			url: "https://script.google.com/macros/s/AKfycbys0Zi7pHzAL_fPkkOFOUSaOm1tjma1PVPdtrHmk5U0MHQo6paI/exec",
+			success: function(data) {
+				var intRatesJSON = new Object();
+				for(var i=0;i<data.length;i++){
+						intRatesJSON[data[i][0]]=data[i][1];
+				}
+				sessionStorage.setItem("intRates",JSON.stringify(intRatesJSON));
+				console.log(intRatesJSON);	
+			}
+		}))
+.then(
+	window.onload = function () {
+		//getData();
+		//getIntRates();
+		$("#wait").fadeOut(1000,function(){
+			setup();
+		});
+		if(sessionStorage.productType==='zodiac')
+			$(".name").css("display","none").remove();
+		else
+			$(".zodiac").css("display","none").remove();
+	}
+);
 
 $("#mainForm").on("submit",function(e){
 	var product = new Object();

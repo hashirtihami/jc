@@ -24,6 +24,8 @@ $("#submitButton").on("click",function() {
 					cart[i].city = $("#city").val();
 					cart[i].contactNo = $("#cno").val();
 					cart[i].email = $("#email").val();
+					cart[i].formula = cart[i].serialNo+"-"+cart[i].nameOnProduct+"-"+cart[i].nameLanguage+"-"+cart[i].productType+" "+
+										cart[i].product+"-"+cart[i].city;
 					$.ajax({
 					    url: "https://script.google.com/macros/s/AKfycby0bS6wsX9aEcdKq5XvUUGWsGbopPNoAeOaw9rBYtiFf8q08YQ/exec",
 					    method: "GET",
