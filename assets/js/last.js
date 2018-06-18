@@ -8,11 +8,18 @@ window.onload = function(){
 	setup();
 }
 
+function changePage(){
+	sessionStorage.setItem("cart",JSON.stringify(cart));
+	$(".form").fadeOut(2000,function(){
+		window.location.assign("receipt.html");
+	});
+}
+
 $("#submitButton").on("click",function() {
 	$("form").on("submit",function(e){
 		e.preventDefault();
 		var serialNo;
-		$.when($.ajax({
+		$.ajax({
 			url:"https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec?req=JSON",
 			success: function (data) {
 				serialNo = JSON.parse(data).serialNo;
@@ -34,18 +41,12 @@ $("#submitButton").on("click",function() {
 					});
 				}
 				$.ajax({
-					async:false,
 					url: "https://script.google.com/macros/s/AKfycbxK7B1rZs2swnQl3hwJxnjjzYwhcZ3M6HEaipa7p4RZ-YSu2fnt/exec",
 					method: "GET",
 					dataType: "json",
 					data: {"serialNo": serialNo+1}
-				});
-				sessionStorage.setItem("cart",JSON.stringify(cart));
+				}).done(changePage());
 			}
-		})).then(
-			$(".form").fadeOut(2000,function(){
-				window.location.assign("receipt.html");
-			})
-		);
+		});
 	});
 });

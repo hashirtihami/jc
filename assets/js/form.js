@@ -13,19 +13,18 @@ function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-$.when(
-    $.ajax({
-		url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
-		success: function(data) {
-			var prices = new Object();
-			for(var i=0;i<data.length;i++){
-					prices[data[i][0]]=data[i][1];
-			}
-			sessionStorage.setItem("prices",JSON.stringify(prices));
-			console.log(prices);
-			price = JSON.parse(sessionStorage.getItem("prices"));
+$.ajax({
+	url: "https://script.google.com/macros/s/AKfycbyajDmuMTssEFyfjd66hergSvqFkdyIzkVtjLx_yU17Dn4KYNg/exec",
+	success: function(data) {
+		var prices = new Object();
+		for(var i=0;i<data.length;i++){
+				prices[data[i][0]]=data[i][1];
 		}
-	}),
+		sessionStorage.setItem("prices",JSON.stringify(prices));
+		console.log(prices);
+		price = JSON.parse(sessionStorage.getItem("prices"));
+	}
+}).done(
 	$.ajax({
 		url: "https://script.google.com/macros/s/AKfycbys0Zi7pHzAL_fPkkOFOUSaOm1tjma1PVPdtrHmk5U0MHQo6paI/exec",
 		success: function(data) {
@@ -36,8 +35,8 @@ $.when(
 			sessionStorage.setItem("intRates",JSON.stringify(intRatesJSON));
 			console.log(intRatesJSON);	
 		}
-	}))
-.then(
+	})
+).done(
 	window.onload = function () {
 		//getData();
 		//getIntRates();
